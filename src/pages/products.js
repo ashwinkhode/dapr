@@ -3,7 +3,7 @@ import ProductGrid from '../components/ProductGrid/ProductGrid'
 
 export async function getStaticProps(context) {
 
-    const res = await fetch(`${server}/api/products`)
+    const res = await fetch(server)
     const data = await res.json()
 
     console.log(data)
