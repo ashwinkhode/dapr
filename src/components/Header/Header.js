@@ -29,13 +29,13 @@ const Header = () => {
                 </Button>
 
                 <Button>
-                    <Badge query='3' />
-                    <AiOutlineShoppingCart className='text-lg sm:text-2xl' />
+                    <Badge query='1' />
+                    <AiOutlineHeart className='text-lg sm:text-2xl' />
                 </Button>
 
                 <Button>
-                    <Badge query='1' />
-                    <AiOutlineHeart className='text-lg sm:text-2xl' />
+                    <Badge query='3' />
+                    <AiOutlineShoppingCart className='text-lg sm:text-2xl' />
                 </Button>
 
             </div>
