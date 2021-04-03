@@ -6,8 +6,6 @@ export async function getStaticProps(context) {
     const res = await fetch(server)
     const data = await res.json()
 
-    console.log(data)
-
     return {
         props: {
             products: data,

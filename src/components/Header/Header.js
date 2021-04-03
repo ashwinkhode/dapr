@@ -1,12 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {AiOutlineShoppingCart, AiOutlineHeart} from 'react-icons/ai'
-import Badge from '../Badge/Badge'
 
+import {useCart} from '../../context/cartContext'
+
+import Badge from '../Badge/Badge'
 import Button from '../Button/Button'
 import Searchbar from '../Searchbar/Searchbar'
 
 const Header = () => {
+
+    const {cartState} = useCart()
+
     return (
         <div className="flex flex-row justify-between w-full p-2 shadow-md">
             <Link href='/'>
@@ -28,15 +33,19 @@ const Header = () => {
                     LOGIN
                 </Button>
 
-                <Button>
-                    <Badge query='1' />
-                    <AiOutlineHeart className='text-lg sm:text-2xl' />
-                </Button>
+                <Link href='/wishlist'>
+                    <Button>
+                        <Badge query='1' />
+                        <AiOutlineHeart className='text-lg sm:text-2xl' />
+                    </Button>
+                </Link>
 
-                <Button>
-                    <Badge query='3' />
-                    <AiOutlineShoppingCart className='text-lg sm:text-2xl' />
-                </Button>
+                <Link href='/cart'>
+                    <Button>
+                        <Badge query={cartState.cart.length} />
+                        <AiOutlineShoppingCart className='text-lg sm:text-2xl' />
+                    </Button>
+                </Link>
 
             </div>
 

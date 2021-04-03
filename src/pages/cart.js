@@ -1,7 +1,17 @@
+import {useCart} from '../context/cartContext'
+
 const Cart = () => {
+
+    const {cartState, dispatchToCart} = useCart()
+
     return (
         <div>
-            This is cart
+            {
+                cartState.cart.map(
+                    (item) => (
+                        <div>{`${item.title} $${item.price} Qty: ${item.quantity}`}</div>
+                    ))
+            }
         </div>
     )
 }
