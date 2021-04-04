@@ -11,7 +11,7 @@ const VARIANTS = {
         base: "border-transparent text-gray-700",
         active:
             "focus:outline-none ",
-        disabled: "bg-gray-100",
+        disabled: "opacity-40",
     },
     danger: {
         base: "border-transparent text-white",
@@ -26,13 +26,14 @@ const VARIANTS = {
     },
 }
 
-const Button = ({className, variant = 'default', fullWidth, children, ...props}) => {
+const Button = ({className, padding = 'px-2 py-2 sm:px-4 sm:py-2', variant = 'default', circular, fullWidth, children, ...props}) => {
     const variantStyles = VARIANTS[variant] || VARIANTS.default
     return (
         <button
             type='button'
             className={
-                clsx('relative font-semibold px-2 py-1 text-sm sm:text-base sm:px-4 sm:py-2 gap-x-2 inline-flex justify-center items-center border',
+                clsx('relative font-semibold text-sm sm:text-base gap-x-2 inline-flex justify-center items-center border',
+                    circular ? 'px-3 py-1' : padding,
                     variantStyles.base,
                     fullWidth && "w-full text-center",
                     props?.disabled && "cursor-default",

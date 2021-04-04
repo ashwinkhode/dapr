@@ -1,4 +1,3 @@
-import {CartProvider} from '../../context/cartContext'
 import ProductCard from '../ProductCard/ProductCard'
 
 const ProductGrid = ({products}) => {
