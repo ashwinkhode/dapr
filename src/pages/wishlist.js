@@ -1,4 +1,7 @@
 import WishlistItem from '../components/WishlistItem/WishlistItem'
+import EmptyState from '../components/EmptyState/EmptyState'
+
+import {useCart} from '../context/cartContext'
 
 const Wishlist = () => {
 
@@ -12,17 +15,26 @@ const Wishlist = () => {
         quantity: 1
     }
 
-    return (
-        <div className='flex justify-center'>
-            <div className="flex flex-col justify-start lg:w-1/2 mb-2 shadow-md border border-gray-100">
-                <h1 className='font-bold text-2xl p-4'>My Wishlist</h1>
-                <WishlistItem product={fakeItem} />
-                <WishlistItem product={fakeItem} />
-                <WishlistItem product={fakeItem} />
-                <WishlistItem product={fakeItem} />
+    const {cartState, dispatchToCart} = useCart()
+
+    return cartState.wishlist.length === 0
+        ? (
+            <div className="text-center mx-auto lg:w-1/3">
+                <EmptyState page='wishlist' />
             </div>
-        </div>
-    )
+        )
+        : (
+            <div className='flex justify-center'>
+                <div className="flex flex-col justify-start lg:w-1/2 mb-2 shadow-md border border-gray-100">
+                    <h1 className='font-bold text-2xl p-4'>My Wishlist</h1>
+                    {
+                        cartState.wishlist.map(
+                            (item) => <WishlistItem key={item.id} product={item} dispatchToCart={dispatchToCart} />
+                        )
+                    }
+                </div>
+            </div>
+        )
 }
 
 export default Wishlist

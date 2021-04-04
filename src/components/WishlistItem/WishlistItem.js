@@ -2,7 +2,9 @@ import Image from 'next/image'
 
 import Button from '../Button/Button'
 
-const WishlistItem = ({product}) => {
+import {handleAddToCart, handleAddToWishlist, handleRemoveFromWishlist} from '../../reducers/cart/cart.actions'
+
+const WishlistItem = ({product, dispatchToCart}) => {
 
     const {id, title, price, description, category, image, quantity} = product
 
@@ -33,14 +35,24 @@ const WishlistItem = ({product}) => {
                     </p>
                 </div>
                 <div className='flex gap-x-2 sm:gap-x-6 '>
-                    <Button padding='p-0'>MOVE TO CART</Button>
-                    <Button padding='p-0'>REMOVE</Button>
+                    <Button
+                        padding='p-0'
+                        onClick={
+                            () => {
+                                // TODO: Gotta use Redux Thunk here
+                                dispatchToCart(handleRemoveFromWishlist(product))
+                                // dispatchToCart(handleAddToCart(product))
+                            }
+                        }
+                    >MOVE TO CART</Button>
+                    <Button
+                        padding='p-0'
+                        onClick={
+                            () => dispatchToCart(handleRemoveFromWishlist(product))
+                        }
+                    >REMOVE</Button>
                 </div>
             </div>
-            {/* <div className='flex sm:hidden'>
-                <Button padding='p-0'>SAVE FOR LATER</Button>
-                <Button padding='p-0'>REMOVE</Button>
-            </div> */}
         </div>
     )
 }

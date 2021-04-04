@@ -29,13 +29,15 @@ const Header = () => {
             <Searchbar />
 
             <div className="flex items-center">
-                <Button>
-                    LOGIN
-                </Button>
+                <Link href='/products'>
+                    <Button>
+                        SHOP
+                    </Button>
+                </Link>
 
                 <Link href='/wishlist'>
                     <Button>
-                        <Badge query='1' />
+                        <Badge query={cartState.wishlist.length} />
                         <AiOutlineHeart className='text-lg sm:text-2xl' />
                     </Button>
                 </Link>

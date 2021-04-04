@@ -2,9 +2,22 @@ import Image from 'next/image'
 
 import Button from '../Button/Button'
 
+import {handleAddToWishlist, handleDecreaseQuantity, handleIncreaseQuantity, handleRemoveFromCart, logger} from '../../reducers/cart/cart.actions'
+import {useCart} from '../../context/cartContext'
+
 const CartItem = ({product}) => {
 
     const {id, title, price, description, category, image, quantity} = product
+    const {cartState, dispatchToCart} = useCart()
+
+    const handleDecreaseButtonClick = (product) => {
+        if (product.quantity === 1) {
+            dispatchToCart(handleRemoveFromCart(product))
+        } else {
+            dispatchToCart(handleDecreaseQuantity(product))
+        }
+
+    }
 
     return (
         <div className='relative flex justify-start p-4 lg:p-4 border border-gray-100 shadow-sm'>
@@ -26,9 +39,23 @@ const CartItem = ({product}) => {
                 </div>
 
                 <div className='flex items-center text-center'>
-                    <Button variant='secondary' className='rounded-full' circular>-</Button>
-                    <Button>{quantity}</Button>
-                    <Button variant='secondary' className='rounded-full' circular>+</Button>
+                    <Button
+                        variant='secondary'
+                        className='rounded-full'
+                        circular
+                        onClick={
+                            () => handleDecreaseButtonClick(product)
+                        }
+                    >-</Button>
+                    <Button className='cursor-default'>{quantity}</Button>
+                    <Button
+                        variant='secondary'
+                        className='rounded-full'
+                        circular
+                        onClick={
+                            () => dispatchToCart(handleIncreaseQuantity(product))
+                        }
+                    >+</Button>
                 </div>
                 <div>
                     <p className='font-bold text-xl sm:text-xl my-2'>${price}
@@ -38,14 +65,24 @@ const CartItem = ({product}) => {
                     </p>
                 </div>
                 <div className='flex gap-x-2 sm:gap-x-6 '>
-                    <Button padding='p-0'>SAVE FOR LATER</Button>
-                    <Button padding='p-0'>REMOVE</Button>
+                    <Button
+                        padding='p-0'
+                        onClick={
+                            () => {
+                                // TODO: Gotta use Redux Thunk here
+                                dispatchToCart(handleRemoveFromCart(product))
+                                // dispatchToCart(handleAddToWishlist(product))
+                            }
+                        }
+                    >SAVE FOR LATER</Button>
+                    <Button
+                        padding='p-0'
+                        onClick={
+                            () => dispatchToCart(handleRemoveFromCart(product))
+                        }
+                    >REMOVE</Button>
                 </div>
             </div>
-            {/* <div className='flex sm:hidden'>
-                <Button padding='p-0'>SAVE FOR LATER</Button>
-                <Button padding='p-0'>REMOVE</Button>
-            </div> */}
         </div>
     )
 }
