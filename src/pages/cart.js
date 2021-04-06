@@ -3,6 +3,7 @@ import {useCart} from '../context/cartContext'
 import CartItem from '../components/CartItem/CartItem'
 import Button from '../components/Button/Button'
 import EmptyState from '../components/EmptyState/EmptyState'
+import SEO from '../components/SEO/SEO'
 
 const Cart = () => {
 
@@ -29,11 +30,13 @@ const Cart = () => {
     return cartState.cart.length === 0
         ? (
             <div className="text-center mx-auto lg:w-1/3">
+                <SEO pageTitle='Cart' />
                 <EmptyState page='cart' />
             </div>
         )
         : (
             <div className='mx-auto flex flex-col lg:flex-row justify-center gap-x-4'>
+                <SEO pageTitle='Cart' />
                 <div className="flex flex-col justify-start lg:w-2/3 mb-2 shadow-md border border-gray-100">
                     <h1 className='font-bold text-2xl p-4'>My Cart ({cartState.cart.length})</h1>
                     {
