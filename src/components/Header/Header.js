@@ -13,16 +13,16 @@ const Header = () => {
     const {cartState} = useCart()
 
     return (
-        <div className="flex flex-row justify-between w-full p-2 shadow-md">
+        <div className="flex flex-row justify-between w-full p-2 shadow-md h-[10vh]">
             <Link href='/'>
                 <a className='justify-center items-center flex'>
                     <Image
-                        src='/favicon.ico'
-                        alt='Miku Mart'
+                        src='/logo.png'
+                        alt='Dapr'
                         height='50'
-                        width='50'
+                        width='100'
                     />
-                    <span className='text-lg font-bold px-2 hidden sm:block'>Miku Mart</span>
+                    {/* <span className='text-lg font-bold px-2 hidden sm:block'>Miku Mart</span> */}
                 </a>
             </Link>
 

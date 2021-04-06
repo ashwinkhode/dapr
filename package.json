@@ -1,24 +1,33 @@
 {
-  "name": "miku-mart",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "clsx": "^1.1.1",
-    "next": "10.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "swr": "^0.5.5"
-  },
-  "devDependencies": {
-    "@tailwindcss/jit": "^0.1.17",
-    "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.9",
-    "react-icons": "^4.2.0",
-    "tailwindcss": "^2.0.4"
-  }
+    "name": "dapr",
+    "version": "0.1.0",
+    "description": "An ecommerce app built using React, Next.js & TailwindCSS",
+    "keywords": [
+        "ecommerce",
+        "react",
+        "nextjs",
+        "javascript"
+    ],
+    "repository": "https://github.com/ashwinkhode/dapr.git",
+    "homepage": "https://dapr.vercel.app",
+    "author": "Ashwin Khode <ashwin.khode1@gmail.com>",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "clsx": "^1.1.1",
+        "next": "10.1.2",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "swr": "^0.5.5"
+    },
+    "devDependencies": {
+        "@tailwindcss/jit": "^0.1.17",
+        "autoprefixer": "^10.2.5",
+        "postcss": "^8.2.9",
+        "react-icons": "^4.2.0",
+        "tailwindcss": "^2.0.4"
+    }
 }

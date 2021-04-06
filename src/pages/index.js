@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <div className='min-w-full min-h-full'>
       <Head>
-        <title>Miku Mart | E-commerce website</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Dapr | Premium Clothing</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <div className="lg:w-9/12 mx-auto mt-8">
