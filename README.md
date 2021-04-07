@@ -63,11 +63,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 -   [x] Wishlist Page
 -   [x] Cart Page
 -   [x] Product Page
--   [x] Create ui elements -> buttons, cards, nav, modal and footer, layout
--   [] setup axios
--   [] create landing page
--   [] Polish UI
--   [] Sort & Filter Component
+-   [x] Create ui components
+-   [x] create landing page
+-   [-] setup axios
+-   [-] Polish UI
+-   [-] Sort & Filter Component
+-   [-] Search functionality
 
 ## License
 
