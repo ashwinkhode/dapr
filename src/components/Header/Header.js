@@ -32,7 +32,6 @@ const Header = () => {
                                 height='50'
                                 width='100'
                             />
-                            {/* <span className='text-lg font-bold px-2 hidden sm:block'>Miku Mart</span> */}
                         </a>
                     </Link>
 
@@ -44,7 +43,7 @@ const Header = () => {
                         <Link href='/products'>
                             <Button className='hidden sm:block'>
                                 SHOP
-                    </Button>
+                            </Button>
                         </Link>
                         <Button className='sm:hidden' onClick={() => setSearchbarToggle(!searchbarToggle)}>
                             <AiOutlineSearch className='text-lg sm:text-2xl ' />

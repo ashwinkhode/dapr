@@ -1,5 +1,4 @@
 import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
 import {CartProvider} from '../context/cartContext'
 import '../styles/global.css'
 

@@ -28,7 +28,6 @@ const VARIANTS = {
         base: "outline-none focus:outline-none",
         active: "text-white border-white hover:text-gray-700 hover:bg-white",
     }
-
 }
 
 const Button = ({className, padding = 'px-2 py-2 sm:px-4 sm:py-2', variant = 'default', circular, fullWidth, children, ...props}) => {

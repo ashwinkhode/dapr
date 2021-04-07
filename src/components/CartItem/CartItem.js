@@ -1,13 +1,16 @@
+// packages
 import Image from 'next/image'
 
+// components
 import Button from '../Button/Button'
 
+// state management
 import {handleSaveForLater, handleDecreaseQuantity, handleIncreaseQuantity, handleRemoveFromCart, logger} from '../../reducers/cart/cart.actions'
 import {useCart} from '../../context/cartContext'
 
 const CartItem = ({product}) => {
 
-    const {id, title, price, description, category, image, quantity} = product
+    const {title, price, category, image, quantity} = product
     const {dispatchToCart} = useCart()
 
     const handleDecreaseButtonClick = (product) => {
@@ -16,7 +19,6 @@ const CartItem = ({product}) => {
         } else {
             dispatchToCart(handleDecreaseQuantity(product))
         }
-
     }
 
     return (
