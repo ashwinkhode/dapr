@@ -18,10 +18,11 @@ const SEO = ({
             <meta property="og:url" content="https://dapr.vercel.app/" />
             <meta property="og:image" content="https://dapr.vercel.app/banner.png" />
             <meta name="keywords" content="shop online, online shopping, online shopping in india, online shopping india, shop online india, shop online in india mens clothing, womens apparel, kids"></meta>
-            <meta property="twitter:card" content="summary" />
+            <meta property="twitter:card" content="summary_large_image" />
             <meta property="twitter:creator" content="@ashwin4real" />
             <meta property="twitter:title" content={title} />
             <meta property="twitter:description" content={description} />
+            <meta property="twitter:image" content="https://dapr.vercel.app/banner.png" />
         </Head>
     )
 }
