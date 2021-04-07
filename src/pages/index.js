@@ -1,5 +1,3 @@
-import Head from 'next/head'
-
 import SEO from '../components/SEO/SEO'
 import Jumbotron from '../components/Jumbotron/Jumbotron'
 import OfferCard from '../components/OfferCard/OfferCard'
@@ -14,22 +12,27 @@ export default function Home() {
         <div className='mb-12'>
           <Jumbotron
             title="Winter 21’"
-            subTitle='UPTO 60% OFF'
+            subtitle='UPTO 60% OFF'
             description='Winter layer season is here. Check out our trendy new winter collection to stay warm in style.'
-            image='/model1.png'
+            url='/model1.png'
           />
         </div>
         <div className='mt-2 mb-20 w-full'>
           <div className='h-[160vh] lg:h-[50vh] py-4 justify-center items-center gap-y-8 lg:gap-x-8 flex flex-col lg:flex-row'>
             <div className="offercard w-full h-full lg:w-1/2">
-              <OfferCard />
+              <OfferCard
+                title="Winter Collection"
+                subtitle="Winter's Best"
+                description='Check out our best winter collection to stay warm in style this season'
+                url='/model4.png'
+              />
             </div>
             <div className="offercard w-full h-full lg:w-1/2">
               <OfferCard
                 title='New Arrivals'
                 subtitle='The Black Beauty'
                 description='Look sophisticated in our new collection of all-black clothing ensemble'
-                image='/model3.png'
+                url='/model3.png'
               />
             </div>
           </div>
@@ -37,9 +40,9 @@ export default function Home() {
         <div className='my-16'>
           <Jumbotron
             title='All Ups For Grabs'
-            subTitle='Enjoy up to 70% off!'
+            subtitle='Enjoy up to 70% off!'
             description='Grab your limited-time discount and enjoy 70& off on all our products'
-            image='/model2.png'
+            url='/model2.png'
             variant='gray'
           />
         </div>
