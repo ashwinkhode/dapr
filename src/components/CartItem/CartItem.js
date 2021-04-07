@@ -2,13 +2,13 @@ import Image from 'next/image'
 
 import Button from '../Button/Button'
 
-import {handleAddToWishlist, handleDecreaseQuantity, handleIncreaseQuantity, handleRemoveFromCart, logger} from '../../reducers/cart/cart.actions'
+import {handleSaveForLater, handleDecreaseQuantity, handleIncreaseQuantity, handleRemoveFromCart, logger} from '../../reducers/cart/cart.actions'
 import {useCart} from '../../context/cartContext'
 
 const CartItem = ({product}) => {
 
     const {id, title, price, description, category, image, quantity} = product
-    const {cartState, dispatchToCart} = useCart()
+    const {dispatchToCart} = useCart()
 
     const handleDecreaseButtonClick = (product) => {
         if (product.quantity === 1) {
@@ -69,9 +69,7 @@ const CartItem = ({product}) => {
                         padding='p-0'
                         onClick={
                             () => {
-                                // TODO: Gotta use Redux Thunk here
-                                dispatchToCart(handleRemoveFromCart(product))
-                                // dispatchToCart(handleAddToWishlist(product))
+                                dispatchToCart(handleSaveForLater(product))
                             }
                         }
                     >SAVE FOR LATER</Button>

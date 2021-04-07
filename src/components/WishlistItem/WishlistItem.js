@@ -2,11 +2,11 @@ import Image from 'next/image'
 
 import Button from '../Button/Button'
 
-import {handleAddToCart, handleAddToWishlist, handleRemoveFromWishlist} from '../../reducers/cart/cart.actions'
+import {handleMoveToCart, handleRemoveFromWishlist} from '../../reducers/cart/cart.actions'
 
 const WishlistItem = ({product, dispatchToCart}) => {
 
-    const {id, title, price, description, category, image, quantity} = product
+    const {title, price, category, image} = product
 
     return (
         <div className='relative flex justify-start p-4 lg:p-4 border border-gray-100 shadow-sm'>
@@ -39,9 +39,7 @@ const WishlistItem = ({product, dispatchToCart}) => {
                         padding='p-0'
                         onClick={
                             () => {
-                                // TODO: Gotta use Redux Thunk here
-                                dispatchToCart(handleRemoveFromWishlist(product))
-                                // dispatchToCart(handleAddToCart(product))
+                                dispatchToCart(handleMoveToCart(product))
                             }
                         }
                     >MOVE TO CART</Button>

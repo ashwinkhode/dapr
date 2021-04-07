@@ -1,4 +1,6 @@
-import {ADD_TO_CART, REMOVE_FROM_CART, INCREASE_QUANTITY, DECREASE_QUANTITY, LOGGER, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST} from './cart.types'
+import isPresentHelper from '../../utils/isPresentHelper'
+
+import {ADD_TO_CART, REMOVE_FROM_CART, INCREASE_QUANTITY, DECREASE_QUANTITY, LOGGER, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SAVE_FOR_LATER, MOVE_TO_CART} from './cart.types'
 
 export const INITIAL_STATE = {
     cart: [],
@@ -23,12 +25,10 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
         case ADD_TO_CART:
-            const isProductAdded = state.cart.find(
-                (item) => item.id === action.payload.id
-            )
+            const isProductAddedToCart = isPresentHelper(state.cart, action.payload)
             return {
                 ...state,
-                cart: isProductAdded
+                cart: isProductAddedToCart
                     ? state.cart.map(
                         (item) =>
                             item.id === action.payload.id
@@ -73,11 +73,19 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                             : (item)
                 )
             }
+        case SAVE_FOR_LATER:
+            const isPresentInWishlist = isPresentHelper(state.wishlist, action.payload)
+            return {
+                cart: state.cart.filter(
+                    (item) =>
+                        item.id !== action.payload.id
+                ),
+                wishlist: !!isPresentInWishlist ? [...state.wishlist] : [...state.wishlist, action.payload]
+            }
         case ADD_TO_WISHLIST:
-            const isPresent = state.cart.find(
-                (item) => item.id === action.payload.id
-            )
-            if (!isPresent) return {...state, wishlist: [...state.wishlist, action.payload]}
+            const isProductAddedToWishlist = isPresentHelper(state.wishlist, action.payload)
+            if (!isProductAddedToWishlist) return {...state, wishlist: [...state.wishlist, action.payload]}
+            break
         case REMOVE_FROM_WISHLIST:
             return {
                 ...state,
@@ -85,6 +93,15 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
                     (item) =>
                         item.id !== action.payload.id
                 )
+            }
+        case MOVE_TO_CART:
+            const isPresentInCart = isPresentHelper(state.cart, action.payload)
+            return {
+                cart: !!isPresentInCart ? [...state.cart] : [...state.cart, {...action.payload, quantity: 1}],
+                wishlist: state.wishlist.filter(
+                    (item) =>
+                        item.id !== action.payload.id
+                ),
             }
         case LOGGER:
             console.log(state, action)

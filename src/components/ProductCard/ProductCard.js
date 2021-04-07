@@ -5,12 +5,13 @@ import Button from '../Button/Button'
 
 import {handleAddToCart, handleAddToWishlist, handleRemoveFromWishlist, logger} from '../../reducers/cart/cart.actions'
 import {useCart} from '../../context/cartContext'
+import isPresentHelper from '../../utils/isPresentHelper'
 
 const ProductCard = ({product}) => {
 
     const {id, title, price, description, category, image} = product
     const {cartState, dispatchToCart} = useCart()
-    const isProductAddedToWishlist = cartState.wishlist.find((item) => item.id === product.id)
+    const isProductAddedToWishlist = isPresentHelper(cartState.wishlist, product)
 
     return (
         // <div className="flex flex-col w-1/2 sm:max-w-[14rem] text-sm sm:text-base min-w-[6rem] md:min-w-[12rem] lg:min-w-[12rem] sm:rounded sm:shadow-md border border-gray-300">
