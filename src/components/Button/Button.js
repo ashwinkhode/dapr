@@ -38,7 +38,7 @@ const Button = ({className, padding = 'px-2 py-2 sm:px-4 sm:py-2', variant = 'de
             type='button'
             className={
                 clsx('relative font-semibold text-sm sm:text-base gap-x-2 inline-flex justify-center items-center border transition duration-300 ',
-                    circular ? 'px-3 py-1' : padding,
+                    circular ? 'px-3 py-1 w-8 h-8' : padding,
                     variantStyles.base,
                     fullWidth && "w-full text-center",
                     props?.disabled && "cursor-default",
