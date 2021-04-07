@@ -28,12 +28,15 @@ const ProductCard = ({product}) => {
                         }
                     </button>
                     <span className='absolute bg-gray-200  text-xs font-bold rounded-sm top-2 left-2 px-2 py-1 z-10'>-49%</span>
-                    {/* TODO: Replace img tag with Image component */}
-                    <img
-                        className='p-2 min-w-full h-[40vh] min-h-full object-fill'
-                        src={image}
-                        alt={title}
-                    />
+                    <div
+                        className='relative p-2 min-w-full h-[40vh] min-h-full object-fill'>
+                        <Image
+                            src={image}
+                            alt={title}
+                            layout='fill'
+                            objectFit='contain'
+                        />
+                    </div>
                 </div>
                 <div className='relative px-4 py-2 w-full'>
                     <h1 className='font-bold text-base sm:text-xl capitalize opacity-80'>{category}</h1>

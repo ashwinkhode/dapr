@@ -52,6 +52,7 @@ const Jumbotron = ({title, subtitle, description, url, variant = 'white'}) => {
                         src={url}
                         alt='clothing'
                         layout='fill'
+                        objectFit='contain'
                     />
                 </div>
             </div>

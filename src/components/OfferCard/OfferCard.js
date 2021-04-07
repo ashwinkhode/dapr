@@ -19,7 +19,7 @@ const OfferCard = ({title, subtitle, description, url}) => {
                             {description}
                         </p>
                     </div>
-                    <div>
+                    <div className='mb-4 sm:mb-0'>
                         <Link href="/products">
                             <a>
                                 <Button variant='secondary' className="border-2">
@@ -34,6 +34,7 @@ const OfferCard = ({title, subtitle, description, url}) => {
                         src={url}
                         alt='clothing'
                         layout='fill'
+                        objectFit='contain'
                     />
                 </div>
             </div>
