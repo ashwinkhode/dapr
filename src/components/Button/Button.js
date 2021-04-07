@@ -20,10 +20,15 @@ const VARIANTS = {
         disabled: "bg-red-400",
     },
     secondary: {
-        base: "border-gray-700 outline-none",
+        base: "outline-none focus:outline-none",
         active:
-            "text-gray-700 hover:bg-gray-100 focus:outline-none",
+            "text-gray-700 border-gray-700 hover:text-white hover:bg-gray-700",
     },
+    invert: {
+        base: "outline-none focus:outline-none",
+        active: "text-white border-white hover:text-gray-700 hover:bg-white",
+    }
+
 }
 
 const Button = ({className, padding = 'px-2 py-2 sm:px-4 sm:py-2', variant = 'default', circular, fullWidth, children, ...props}) => {
@@ -32,7 +37,7 @@ const Button = ({className, padding = 'px-2 py-2 sm:px-4 sm:py-2', variant = 'de
         <button
             type='button'
             className={
-                clsx('relative font-semibold text-sm sm:text-base gap-x-2 inline-flex justify-center items-center border',
+                clsx('relative font-semibold text-sm sm:text-base gap-x-2 inline-flex justify-center items-center border transition duration-300 ',
                     circular ? 'px-3 py-1' : padding,
                     variantStyles.base,
                     fullWidth && "w-full text-center",
