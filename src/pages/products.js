@@ -20,6 +20,8 @@ export async function getStaticProps(context) {
 
 const Products = ({products}) => {
 
+    console.log(server)
+
     return (
         <div className='relative pb-8 mt-2 md:mt-0'>
             <SEO pageTitle='Products' />

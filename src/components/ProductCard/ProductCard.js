@@ -1,15 +1,16 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
 
 import Button from '../Button/Button'
 
 import {handleAddToCart, handleAddToWishlist, handleRemoveFromWishlist, logger} from '../../reducers/cart/cart.actions'
 import {useCart} from '../../context/cartContext'
-import isPresentHelper from '../../utils/isPresentHelper'
+import {isPresentHelper, discountCalc} from '../../utils/productHelper'
 
 const ProductCard = ({product}) => {
 
-    const {id, title, price, description, category, image} = product
+    const {id, title, price, mrp, category, image} = product
     const {cartState, dispatchToCart} = useCart()
     const isProductAddedToWishlist = isPresentHelper(cartState.wishlist, product)
 
@@ -27,27 +28,35 @@ const ProductCard = ({product}) => {
                             isProductAddedToWishlist ? <AiFillHeart className='text-red-500' /> : <AiOutlineHeart />
                         }
                     </button>
-                    <span className='absolute bg-gray-200  text-xs font-bold rounded-sm top-2 left-2 px-2 py-1 z-10'>-49%</span>
+                    <span className='absolute bg-gray-200  text-xs font-bold rounded-sm top-2 left-2 px-2 py-1 z-10'>-{discountCalc(price, mrp)}%</span>
                     <div
                         className='relative p-2 min-w-full h-[40vh] min-h-full object-fill'>
-                        <Image
-                            src={image}
-                            alt={title}
-                            layout='fill'
-                            objectFit='contain'
-                        />
+                        <Link href={`product/${id}`}>
+                            <a>
+                                <Image
+                                    src={image}
+                                    alt={title}
+                                    layout='fill'
+                                    objectFit='contain'
+                                />
+                            </a>
+                        </Link>
                     </div>
                 </div>
                 <div className='relative px-4 py-2 w-full'>
-                    <h1 className='font-bold text-base sm:text-xl capitalize opacity-80'>{category}</h1>
-                    <p className='my-1 text-xs sm:text-sm text-gray-500 '>{title}</p>
+                    <Link href={`product/${id}`}>
+                        <a>
+                            <h1 className='font-bold text-base sm:text-xl capitalize opacity-80'>{category}</h1>
+                            <p className='my-1 text-xs sm:text-sm text-gray-500 '>{title}</p>
+                        </a>
+                    </Link>
                 </div>
             </div>
             <div className="description p-4 flex flex-col justify-between">
                 <div>
                     <p className='font-bold text-base sm:text-xl mb-2'>${price}
                         <span className='font-normal opacity-60 text-xs sm:text-sm line-through ml-2'>
-                            ${+price + 100}
+                            ${mrp}
                         </span>
                     </p>
                 </div>
