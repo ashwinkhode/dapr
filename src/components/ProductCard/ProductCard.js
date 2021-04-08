@@ -15,7 +15,7 @@ const ProductCard = ({product}) => {
     const isProductAddedToWishlist = isPresentHelper(cartState.wishlist, product)
 
     return (
-        <div className="w-1/2 flex flex-col justify-between overflow-hidden md:my-1 md:px-1 md:w-1/3 lg:my-2 lg:px-1 lg:w-1/5 xl:my-2 xl:px-1 xl:w-1/5 sm:shadow-lg sm:hover:shadow-2xl sm:transition-shadow border border-gray-100">
+        <div className="w-1/2 flex flex-col justify-between overflow-hidden md:my-1 md:px-1 md:w-1/3 lg:my-2 lg:px-1 lg:w-1/5 xl:my-2 xl:px-1 xl:w-1/5 hover:z-50 sm:shadow-lg sm:hover:shadow-2xl sm:transition-shadow border border-gray-100">
             <div className="relative w-full overflow-hidden">
                 <div>
                     <button className="absolute top-2 right-2 bg-white rounded-full p-2 z-10 focus:outline-none transition-transform transform duration-300 hover:scale-150 outline-none"
