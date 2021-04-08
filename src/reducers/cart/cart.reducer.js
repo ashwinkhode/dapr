@@ -1,4 +1,4 @@
-import isPresentHelper from '../../utils/isPresentHelper'
+import {isPresentHelper} from '../../utils/productHelper'
 
 import {ADD_TO_CART, REMOVE_FROM_CART, INCREASE_QUANTITY, DECREASE_QUANTITY, LOGGER, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SAVE_FOR_LATER, MOVE_TO_CART} from './cart.types'
 
