@@ -2,8 +2,15 @@
 
 const dataModifer = async (array) => {
 
+  // ! Hard coding bc I am exhausted. Will right better solution later
+  const idChecker = async (id) => await id === 4 || await id === 8 || await id === 12 || await id === 16 || await id === 20
+
   const pArray = array.map(async value => {
-    return {...value, mrp: Math.floor(await value.price + Math.random() * 100)}
+    return {
+      ...value,
+      mrp: Math.floor(await value.price + Math.random() * 100),
+      outOfStock: await idChecker(value.id)
+    }
   })
   const rArray = await Promise.all(pArray)
 
