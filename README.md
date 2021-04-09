@@ -65,10 +65,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 -   [x] Product Page
 -   [x] Create ui components
 -   [x] create landing page
--   [-] setup axios
+-   [x] Search functionality
 -   [-] Polish UI
+-   [-] Add Authentication
 -   [-] Sort & Filter Component
--   [-] Search functionality
 
 ## License
 
