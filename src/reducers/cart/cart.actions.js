@@ -1,6 +1,6 @@
 import {ADD_TO_CART, REMOVE_FROM_CART, LOGGER, INCREASE_QUANTITY, DECREASE_QUANTITY, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, SAVE_FOR_LATER, MOVE_TO_CART} from './cart.types';
 
-export const handleAddToCart = (product) => ({type: ADD_TO_CART, payload: product})
+export const handleAddToCart = (product, quantity = 1) => ({type: ADD_TO_CART, payload: product, quantity})
 
 export const handleRemoveFromCart = (product) => ({type: REMOVE_FROM_CART, payload: product})
 

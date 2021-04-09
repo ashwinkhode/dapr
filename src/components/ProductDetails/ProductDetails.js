@@ -1,9 +1,21 @@
+import {useState} from 'react'
 import Image from 'next/image'
 import {AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
-import {discountCalc} from '../../utils/productHelper'
+
+import {discountCalc, isPresentHelper} from '../../utils/productHelper'
+import {useCart} from '../../context/cartContext'
+import {handleAddToCart, handleAddToWishlist, handleRemoveFromWishlist} from '../../reducers/cart/cart.actions'
+
 import Button from '../Button/Button'
 
-const ProductDetails = ({product: {id, title, price, category, mrp, image, description}}) => {
+const ProductDetails = ({product}) => {
+
+    const {id, title, price, category, mrp, image, description} = product
+    const {cartState, dispatchToCart} = useCart()
+    const [quantity, setQuantity] = useState(1)
+    const isPresentInWishlist = isPresentHelper(cartState.wishlist, product)
+    const isPresentInCart = isPresentHelper(cartState.cart, product)
+
     return (
         <div className='flex flex-col lg:flex-row items-center justify-between sm:justify-center w-full h-full lg:min-h-[87vh] lg:h-[80vh] py-4'>
             <div className="relative w-full lg:w-1/3 h-[50vh]">
@@ -24,7 +36,7 @@ const ProductDetails = ({product: {id, title, price, category, mrp, image, descr
                         {description}
                     </p>
                 </div>
-                <p className='font-bold text-lg sm:text-xl mb-2'>
+                <p className='font-bold text-lg sm:text-xl'>
                     ${price}
                     <span className='font-normal opacity-60 text-xs sm:text-sm line-through mx-2'>
                         ${mrp}
@@ -33,17 +45,44 @@ const ProductDetails = ({product: {id, title, price, category, mrp, image, descr
                         {discountCalc(price, mrp)}% OFF
                     </span>
                 </p>
+                <div className='flex items-center text-center mb-2'>
+                    <p className='mr-2'>Qty: </p>
+                    <div>
+                        <Button
+                            variant='secondary'
+                            className='rounded-full'
+                            circular
+                            onClick={
+                                () => {
+                                    if (quantity > 1) {setQuantity(quantity - 1)}
+                                }
+                            }
+                        >-</Button>
+                        <Button className='cursor-default'>{quantity}</Button>
+                        <Button
+                            variant='secondary'
+                            className='rounded-full'
+                            circular
+                            onClick={
+                                () => setQuantity(quantity + 1)
+                            }
+                        >+</Button>
+                    </div>
+                </div>
                 <div className="relative w-full justify-between inline-flex flex-row flex-wrap">
                     <Button
                         className='w-[49%]'
                         variant='secondary'
+                        onClick={() => isPresentInWishlist ? dispatchToCart(handleRemoveFromWishlist(product)) : dispatchToCart(handleAddToWishlist(product))}
                     >
                         <AiOutlineHeart />
-                        Add to Wishlist
+                        {
+                            isPresentInWishlist ? 'Added to Wishlist' : 'Add to Wishlist'}
                     </Button>
                     <Button
                         className='w-[49%]'
                         variant='primary'
+                        onClick={() => dispatchToCart(handleAddToCart(product, quantity))}
                     >
                         <span>
                             <AiOutlineShoppingCart />
