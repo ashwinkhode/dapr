@@ -1,11 +1,12 @@
 import {useState} from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
-import {AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
+import {AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart, AiOutlineDelete} from 'react-icons/ai'
+import toast from 'react-hot-toast';
 
 import {discountCalc, isPresentHelper} from '../../utils/productHelper'
 import {useCart} from '../../context/cartContext'
-import {handleAddToCart, handleAddToWishlist, handleRemoveFromWishlist} from '../../reducers/cart/cart.actions'
+import {handleAddToCart, handleAddToWishlist, handleRemoveFromCart, handleRemoveFromWishlist} from '../../reducers/cart/cart.actions'
 
 import Button from '../Button/Button'
 
@@ -16,6 +17,7 @@ const ProductDetails = ({product}) => {
     const [quantity, setQuantity] = useState(1)
     const isPresentInWishlist = isPresentHelper(cartState.wishlist, product)
     const isPresentInCart = isPresentHelper(cartState.cart, product)
+    const notify = (text) => toast.success(text)
 
     return (
         <div className='flex flex-col lg:flex-row items-center justify-between sm:justify-center w-full h-full lg:min-h-[87vh] lg:h-[80vh] py-4'>
@@ -74,22 +76,36 @@ const ProductDetails = ({product}) => {
                     <Button
                         className='w-[49%]'
                         variant={isPresentInWishlist ? 'primary' : 'secondary'}
-                        onClick={() => isPresentInWishlist ? dispatchToCart(handleRemoveFromWishlist(product)) : dispatchToCart(handleAddToWishlist(product))}
+                        onClick={() => {
+                            isPresentInWishlist ? dispatchToCart(handleRemoveFromWishlist(product)) : dispatchToCart(handleAddToWishlist(product))
+                            isPresentInWishlist ? notify('Removed from Wishlist') : notify('Added to Wishlist')
+                        }
+                        }
                     >
-                        <AiOutlineHeart />
+                        {
+                            isPresentInWishlist ? <AiFillHeart /> : <AiOutlineHeart />
+                        }
                         {
                             isPresentInWishlist ? 'Added to Wishlist' : 'Add to Wishlist'}
                     </Button>
                     <Button
                         className='w-[49%]'
-                        variant='primary'
-                        onClick={() => dispatchToCart(handleAddToCart(product, quantity))}
+                        variant={isPresentInCart ? 'danger' : 'primary'}
+                        onClick={() => {
+                            isPresentInCart ? dispatchToCart(handleRemoveFromCart(product)) : dispatchToCart(handleAddToCart(product, quantity))
+                            isPresentInCart ? notify('Removed from Cart') : notify('Added to Cart')
+                        }
+                        }
                     >
                         <span>
-                            <AiOutlineShoppingCart />
+                            {
+                                isPresentInCart ? <AiOutlineDelete /> : <AiOutlineShoppingCart />
+                            }
                         </span>
-                        Add to Cart
-                        </Button>
+                        {
+                            isPresentInCart ? 'Remove from Cart' : 'Add to Cart'
+                        }
+                    </Button>
                 </div>
             </div>
         </div>

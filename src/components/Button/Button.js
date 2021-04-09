@@ -22,7 +22,7 @@ const VARIANTS = {
     secondary: {
         base: "outline-none focus:outline-none",
         active:
-            "text-gray-700 border-gray-700 hover:text-white hover:bg-gray-700",
+            "text-gray-700 border-gray-700 hover:text-white hover:bg-gray-700 active:bg-white active:text-gray-700",
     },
     invert: {
         base: "outline-none focus:outline-none",

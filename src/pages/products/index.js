@@ -1,5 +1,6 @@
 import {useRouter} from 'next/router'
 import Fuse from 'fuse.js'
+import {Toaster} from 'react-hot-toast';
 
 import {server} from '../../../config'
 
@@ -39,6 +40,7 @@ const Products = ({products}) => {
                 <SortFilter />
             </div>
             <ProductGrid products={searchedProducts} />
+            <Toaster position='bottom-right' />
         </div>
     )
 }

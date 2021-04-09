@@ -1,6 +1,8 @@
 import {useRouter} from 'next/router'
 import useSWR from 'swr'
 
+import {Toaster} from 'react-hot-toast';
+
 import {server} from '../../../config'
 
 import ProductDetails from '../../components/ProductDetails/ProductDetails'
@@ -75,6 +77,7 @@ const Product = ({product}) => {
     return (
         <div className='w-[80vw] mx-auto'>
             <ProductDetails product={product} />
+            <Toaster position='bottom-right' />
         </div>
     )
 

@@ -1,12 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
+import toast from 'react-hot-toast';
 
 import Button from '../Button/Button'
 
 import {handleAddToCart, handleAddToWishlist, handleRemoveFromWishlist, logger} from '../../reducers/cart/cart.actions'
 import {useCart} from '../../context/cartContext'
 import {isPresentHelper, discountCalc} from '../../utils/productHelper'
+
+const notify = (text) => toast.success(text)
 
 const ProductCard = ({product}) => {
 
@@ -15,14 +18,19 @@ const ProductCard = ({product}) => {
     const isProductAddedToWishlist = isPresentHelper(cartState.wishlist, product)
 
     return (
-        <div className="w-1/2 flex flex-col justify-between overflow-hidden md:my-1 md:px-1 md:w-1/3 lg:my-2 lg:px-1 lg:w-1/5 xl:my-2 xl:px-1 xl:w-1/5 hover:z-50 sm:shadow-lg sm:hover:shadow-2xl sm:transition-shadow border border-gray-100">
+        <div className="w-1/2 flex flex-col justify-between overflow-hidden md:my-1 md:px-1 md:w-1/3 lg:my-2 lg:px-1 lg:w-1/5 xl:my-2 xl:px-1 xl:w-1/5 hover:z-10 sm:shadow-lg sm:hover:shadow-2xl sm:transition-shadow border border-gray-100">
             <div className="relative w-full overflow-hidden">
                 <div>
                     <button className="absolute top-2 right-2 bg-white rounded-full p-2 z-10 focus:outline-none transition-transform transform duration-300 hover:scale-150  active:scale-100 outline-none"
                         onClick={
-                            () => isProductAddedToWishlist
-                                ? dispatchToCart(handleRemoveFromWishlist(product))
-                                : dispatchToCart(handleAddToWishlist(product))}
+                            () => {
+                                isProductAddedToWishlist
+                                    ? dispatchToCart(handleRemoveFromWishlist(product))
+                                    : dispatchToCart(handleAddToWishlist(product))
+                                isProductAddedToWishlist
+                                    ? notify('Removed from Wishlist')
+                                    : notify('Added to Wishlist')
+                            }}
                     >
                         {
                             isProductAddedToWishlist ? <AiFillHeart className='text-red-500' /> : <AiOutlineHeart />
@@ -60,7 +68,11 @@ const ProductCard = ({product}) => {
                         </span>
                     </p>
                 </div>
-                <Button variant='primary' onClick={() => dispatchToCart(handleAddToCart(product))}>Add to Cart</Button>
+                <Button variant='primary' onClick={() => {
+                    dispatchToCart(handleAddToCart(product))
+                    notify('Added to Cart')
+                }
+                }>Add to Cart</Button>
             </div>
         </div>
     )
