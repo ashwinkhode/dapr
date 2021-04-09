@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import clsx from 'clsx'
 import Image from 'next/image'
 import {AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
 
@@ -72,7 +73,7 @@ const ProductDetails = ({product}) => {
                 <div className="relative w-full justify-between inline-flex flex-row flex-wrap">
                     <Button
                         className='w-[49%]'
-                        variant='secondary'
+                        variant={isPresentInWishlist ? 'primary' : 'secondary'}
                         onClick={() => isPresentInWishlist ? dispatchToCart(handleRemoveFromWishlist(product)) : dispatchToCart(handleAddToWishlist(product))}
                     >
                         <AiOutlineHeart />
