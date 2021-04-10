@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import clsx from 'clsx'
+import {useRouter} from 'next/router'
 import Image from 'next/image'
 import {AiOutlineShoppingCart, AiOutlineHeart, AiFillHeart, AiOutlineDelete} from 'react-icons/ai'
 import toast from 'react-hot-toast';
@@ -12,6 +12,7 @@ import Button from '../Button/Button'
 
 const ProductDetails = ({product}) => {
 
+    const router = useRouter()
     const {id, title, price, category, mrp, image, description} = product
     const {cartState, dispatchToCart} = useCart()
     const [quantity, setQuantity] = useState(1)
@@ -90,20 +91,20 @@ const ProductDetails = ({product}) => {
                     </Button>
                     <Button
                         className='w-[49%]'
-                        variant={isPresentInCart ? 'danger' : 'primary'}
+                        variant={isPresentInCart ? 'blue' : 'primary'}
                         onClick={() => {
-                            isPresentInCart ? dispatchToCart(handleRemoveFromCart(product)) : dispatchToCart(handleAddToCart(product, quantity))
-                            isPresentInCart ? notify('Removed from Cart') : notify('Added to Cart')
+                            isPresentInCart ? router.push('/cart') : dispatchToCart(handleAddToCart(product, quantity))
+                            isPresentInCart ? null : notify('Added to Cart')
                         }
                         }
                     >
                         <span>
                             {
-                                isPresentInCart ? <AiOutlineDelete /> : <AiOutlineShoppingCart />
+                                <AiOutlineShoppingCart />
                             }
                         </span>
                         {
-                            isPresentInCart ? 'Remove from Cart' : 'Add to Cart'
+                            isPresentInCart ? 'Go to Cart' : 'Add to Cart'
                         }
                     </Button>
                 </div>

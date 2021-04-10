@@ -27,6 +27,10 @@ const VARIANTS = {
     invert: {
         base: "outline-none focus:outline-none",
         active: "text-white border-white hover:text-gray-700 hover:bg-white",
+    },
+    blue: {
+        base: "outline-none focus:outline-none",
+        active: "text-white bg-blue-500 border-blue-500 hover:bg-blue-400 active:bg-blue-700",
     }
 }
 
