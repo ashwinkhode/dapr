@@ -16,7 +16,9 @@ export const INITIAL_STATE = {
         price:'...',
         category:'...',
         description:'...',
-        image:'...'
+        image:'...',
+        mrp: '...',
+        outofstock: '...',
     }
 
 */

@@ -7,10 +7,10 @@ export const handleSort = (sort) => ({
     },
 })
 
-export const handleFilter = (filter) => ({
+export const handleFilter = (filters) => ({
     type: FILTER,
     payload: {
-        filter,
+        filters
     },
 })
 

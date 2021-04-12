@@ -4,11 +4,12 @@ export const INITIAL_STATE = {
     sortStatus: false,
     filterStatus: false,
     sort: null,
-    data: [],
     filters: {
-        brandFilter: null,
-        outOfStock: false,
-        expressDelivery: false,
+        // in_stock: false,
+        men_clothing: false,
+        women_clothing: false,
+        jewelery: false,
+        electronics: false,
     },
 }
 
@@ -18,16 +19,12 @@ export function shopReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 sort: action.payload.sort,
-                data: [...state.data],
                 sortStatus: false
             }
         case FILTER:
             return {
                 ...state,
-                filters: {
-                    ...state.filters,
-                    [action.payload.filter]: !state.filters[action.payload.filter],
-                },
+                filters: action.payload.filters,
                 filterStatus: false
             }
         case FILTER_STATUS:
