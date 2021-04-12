@@ -61,13 +61,14 @@ input[type='radio']:checked + label {
     bottom: 0;
     margin: auto;
     z-index: 101;
-    padding: 15px;
+    padding: 4px;
     background: #fff;
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     /* I am guilty for comitting this crime of using !important  */
     min-width: 240px !important;
     max-width: 400px !important;
+    height: fit-content !important;
     width: 100% !important;
 }
 
