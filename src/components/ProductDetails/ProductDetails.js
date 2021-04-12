@@ -76,7 +76,7 @@ const ProductDetails = ({product}) => {
                 </div>
                 <div className="fixed bottom-0 left-0 right-0 w-[100vw] sm:relative sm:w-full justify-between sm:inline-flex flex-row flex-wrap">
                     <Button
-                        className='w-[49%]'
+                        className='w-1/2 sm:w-[49%]'
                         variant={isPresentInWishlist ? 'primary' : 'secondary'}
                         onClick={() => {
                             logEvent('product', 'add/remove from wishlist')
@@ -92,7 +92,7 @@ const ProductDetails = ({product}) => {
                             isPresentInWishlist ? 'Added to Wishlist' : 'Add to Wishlist'}
                     </Button>
                     <Button
-                        className='w-[49%]'
+                        className='w-1/2 sm:w-[49%]'
                         variant={isPresentInCart ? 'blue' : 'primary'}
                         onClick={() => {
                             logEvent('product', 'added to cart')
