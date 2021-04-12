@@ -66,9 +66,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 -   [x] Create ui components
 -   [x] create landing page
 -   [x] Search functionality
+-   [x] Sort & Filter functionality
 -   [-] Polish UI
 -   [-] Add Authentication
--   [-] Sort & Filter Component
 
 ## License
 
