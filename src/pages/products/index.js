@@ -4,8 +4,9 @@ import {Toaster} from 'react-hot-toast';
 import {TiSortAlphabetically} from 'react-icons/ti'
 import {BsFilter} from 'react-icons/bs'
 
-import {server, colors} from '../../../config'
+import {server} from '../../../config'
 import {handleFilterStatus, handleSortStatus} from '../../reducers/shop/shop.actions'
+import {getFilteredData, getSortedData} from '../../utils/shopHelpers'
 
 import ProductGrid from '../../components/ProductGrid/ProductGrid'
 import Button from '../../components/Button/Button'
@@ -36,7 +37,10 @@ const Products = ({products}) => {
 	const searchedProducts = searchQuery
 		? fuse.search(searchQuery).map(element => element.item)
 		: products
-	const totalProducts = searchedProducts?.length
+	const filteredData = getFilteredData(searchedProducts, shopState.filters)
+	const sortedData = getSortedData(filteredData, shopState.sort)
+	const resultantProducts = sortedData
+	const totalProducts = resultantProducts?.length
 
 	return (
 		<div className='relative pb-8 mt-2 md:mt-0'>
@@ -70,7 +74,7 @@ const Products = ({products}) => {
 				</div>
 			</div>
 
-			<ProductGrid products={searchedProducts} />
+			<ProductGrid products={resultantProducts} />
 
 			<SortFilter />
 

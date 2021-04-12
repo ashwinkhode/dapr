@@ -9,7 +9,7 @@ const dataModifer = async (array) => {
     return {
       ...value,
       mrp: Math.floor(await value.price + Math.random() * 100),
-      outOfStock: await idChecker(value.id)
+      outofstock: await idChecker(value.id)
     }
   })
   const rArray = await Promise.all(pArray)

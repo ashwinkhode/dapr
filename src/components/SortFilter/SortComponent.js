@@ -7,11 +7,11 @@ import Button from '../Button/Button'
 
 const SortComponent = () => {
 
-    const [checkedValue, setCheckedValue] = useState('')
-    const {dispatchToShop} = useShop()
+    const {shopState, dispatchToShop} = useShop()
+    const [checkedValue, setCheckedValue] = useState(shopState.sort)
 
     return (
-        <div class="p-8 flex flex-col gap-y-2">
+        <div className="p-8 flex flex-col gap-y-2">
             <h3>Sort Products by Price</h3>
             <hl className='border-t-2 border-gray-400' />
             <div className='mt-2'>
@@ -27,8 +27,8 @@ const SortComponent = () => {
                     htmlFor="lowHigh"
                     className="inline-flex gap-x-2 whitespace-nowrap text-sm font-medium text-gray-700"
                 >
-                    <span class="w-4 h-4 inline-flex rounded-full border border-grey flex-no-shrink"></span>
-                    <p class={checkedValue === 'lowHigh' ? 'font-semibold' : ''}>
+                    <span className="w-4 h-4 inline-flex rounded-full border border-grey flex-no-shrink"></span>
+                    <p className={checkedValue === 'lowHigh' ? 'font-semibold' : ''}>
                         Price - Low to High
                     </p>
                 </label>
@@ -46,8 +46,8 @@ const SortComponent = () => {
                     htmlFor="highLow"
                     className="inline-flex gap-x-2 whitespace-nowrap text-sm font-medium text-gray-700"
                 >
-                    <span class="w-4 h-4 inline-flex rounded-full border border-grey flex-no-shrink"></span>
-                    <p class={checkedValue === 'highLow' ? 'font-semibold' : ''}>
+                    <span className="w-4 h-4 inline-flex rounded-full border border-grey flex-no-shrink"></span>
+                    <p className={checkedValue === 'highLow' ? 'font-semibold' : ''}>
                         Price - High to Low
                     </p>
                 </label>

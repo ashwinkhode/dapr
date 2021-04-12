@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import Rodal from 'rodal'
 
 import SortComponent from './SortComponent'
@@ -10,8 +9,6 @@ import {handleFilterStatus, handleSortStatus} from '../../reducers/shop/shop.act
 const SortFilter = () => {
 
     const {shopState, dispatchToShop} = useShop()
-
-    console.log(shopState.filterStatus, shopState.sortStatus)
 
     return (
         <Rodal
