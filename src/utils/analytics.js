@@ -2,10 +2,10 @@ import ReactGA from 'react-ga'
 
 export const initGA = () => {
   ReactGA.initialize([{trackingId: process.env.NEXT_PUBLIC_GA_ID}])
+  ReactGA.set({checkProtocolTask: 'testing'});
 }
 
 export const logPageView = () => {
-  console.log(`Logging pageview for ${window.location.pathname}`)
   ReactGA.set({page: window.location.pathname})
   ReactGA.pageview(window.location.pathname)
 }
