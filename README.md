@@ -70,6 +70,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 -   [-] Polish UI
 -   [-] Add Authentication
 
+
+- ⭐ - Star, if you like it
+- 👁 - Watch, get latest updates
+To report a bug, please raise an issue. Thank you!
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/licenses/MIT) page for details.
@@ -77,3 +82,5 @@ This project is licensed under the MIT License - see the [LICENSE](https://opens
 ## Author
 
 Ashwin Khode - [Twitter](https://www.twitter.com/ashwin4real) - [Linkedin](https://www.linkedin.com/in/ashwin-khode/)
+
+
