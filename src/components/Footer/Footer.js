@@ -5,7 +5,12 @@ const Footer = () => {
                 © 2021 Dapr Clothing. All rights reserved.
             </p>
             <p className='my-2 '>Created By: &nbsp;
-            <a className='hover:text-gray-400' href='https://twitter.com/ashwin4real' target='_blank'>
+            <a
+                    className='hover:text-gray-400'
+                    href='https://twitter.com/ashwin4real'
+                    target='_blank'
+                    rel="noopener noreferrer"
+                >
                     Ashwin Khode
             </a></p>
         </footer>

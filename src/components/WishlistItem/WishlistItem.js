@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Button from '../Button/Button'
 
 import {handleMoveToCart, handleRemoveFromWishlist} from '../../reducers/cart/cart.actions'
+import {logEvent} from '../../utils/analytics'
 
 const WishlistItem = ({product, dispatchToCart}) => {
 
@@ -39,6 +40,7 @@ const WishlistItem = ({product, dispatchToCart}) => {
                         padding='p-0'
                         onClick={
                             () => {
+                                logEvent('wishlist', 'moved to cart')
                                 dispatchToCart(handleMoveToCart(product))
                             }
                         }
@@ -46,7 +48,10 @@ const WishlistItem = ({product, dispatchToCart}) => {
                     <Button
                         padding='p-0'
                         onClick={
-                            () => dispatchToCart(handleRemoveFromWishlist(product))
+                            () => {
+                                logEvent('wishlist', 'removed from wishlist')
+                                dispatchToCart(handleRemoveFromWishlist(product))
+                            }
                         }
                     >REMOVE</Button>
                 </div>

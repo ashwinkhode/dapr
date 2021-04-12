@@ -22,9 +22,10 @@
         "next": "10.1.2",
         "react": "17.0.2",
         "react-dom": "17.0.2",
+        "react-ga": "^3.3.0",
         "react-hot-toast": "^1.0.2",
-        "swr": "^0.5.5",
-        "rodal": "^1.8.1"
+        "rodal": "^1.8.1",
+        "swr": "^0.5.5"
     },
     "devDependencies": {
         "@tailwindcss/jit": "^0.1.17",

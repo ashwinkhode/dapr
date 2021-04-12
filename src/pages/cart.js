@@ -4,18 +4,19 @@ import CartItem from '../components/CartItem/CartItem'
 import Button from '../components/Button/Button'
 import EmptyState from '../components/EmptyState/EmptyState'
 import SEO from '../components/SEO/SEO'
+import {logEvent} from '../utils/analytics'
 
 const Cart = () => {
 
     const {cartState} = useCart()
 
-    const amount = cartState.cart.reduce((acc, {price, quantity}) => {
+    const amount = Math.floor(cartState.cart.reduce((acc, {price, quantity}) => {
         return acc + (price * quantity)
-    }, 0)
+    }, 0))
 
-    const totalPricePerItem = cartState.cart.reduce((acc, {price}) => {
+    const totalPricePerItem = Math.floor(cartState.cart.reduce((acc, {price}) => {
         return acc + price
-    }, 0)
+    }, 0))
 
     return cartState.cart.length === 0
         ? (
@@ -61,7 +62,15 @@ const Cart = () => {
                             </span>
                         </div>
                         <div>
-                            <Button variant='primary' fullWidth>Place Order</Button>
+                            <Button
+                                variant='primary'
+                                fullWidth
+                                onClick={
+                                    () => {
+                                        logEvent('Cart', 'Payment')
+                                    }
+                                }
+                            >Place Order</Button>
                         </div>
                         <p className='text-gray-500 text-xs capitalize'>Total price incl GST*</p>
                     </div>

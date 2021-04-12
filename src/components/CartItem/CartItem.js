@@ -7,6 +7,7 @@ import Button from '../Button/Button'
 // state management
 import {handleSaveForLater, handleDecreaseQuantity, handleIncreaseQuantity, handleRemoveFromCart, logger} from '../../reducers/cart/cart.actions'
 import {useCart} from '../../context/cartContext'
+import {logEvent} from '../../utils/analytics'
 
 const CartItem = ({product}) => {
 
@@ -71,6 +72,7 @@ const CartItem = ({product}) => {
                         padding='p-0'
                         onClick={
                             () => {
+                                logEvent('cart', 'save for later')
                                 dispatchToCart(handleSaveForLater(product))
                             }
                         }
@@ -78,7 +80,10 @@ const CartItem = ({product}) => {
                     <Button
                         padding='p-0'
                         onClick={
-                            () => dispatchToCart(handleRemoveFromCart(product))
+                            () => {
+                                logEvent('cart', 'removed from cart')
+                                dispatchToCart(handleRemoveFromCart(product))
+                            }
                         }
                     >REMOVE</Button>
                 </div>

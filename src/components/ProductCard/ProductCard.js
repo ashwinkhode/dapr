@@ -8,6 +8,7 @@ import Button from '../Button/Button'
 import {handleAddToCart, handleAddToWishlist, handleRemoveFromWishlist, logger} from '../../reducers/cart/cart.actions'
 import {useCart} from '../../context/cartContext'
 import {isPresentHelper, discountCalc} from '../../utils/productHelper'
+import {logEvent} from '../../utils/analytics'
 
 const notify = (text) => toast.success(text)
 
@@ -24,6 +25,7 @@ const ProductCard = ({product}) => {
                     <button className="absolute top-2 right-2 bg-white rounded-full p-2 z-10 focus:outline-none transition-transform transform duration-300 hover:scale-150  active:scale-100 outline-none"
                         onClick={
                             () => {
+                                logEvent('Product', 'Add/Remove to wishlist')
                                 isProductAddedToWishlist
                                     ? dispatchToCart(handleRemoveFromWishlist(product))
                                     : dispatchToCart(handleAddToWishlist(product))
@@ -69,6 +71,7 @@ const ProductCard = ({product}) => {
                     </p>
                 </div>
                 <Button variant='primary' onClick={() => {
+                    logEvent('Product', 'Added to cart')
                     dispatchToCart(handleAddToCart(product))
                     notify('Added to Cart')
                 }

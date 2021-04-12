@@ -9,6 +9,7 @@ import {useCart} from '../../context/cartContext'
 import {handleAddToCart, handleAddToWishlist, handleRemoveFromCart, handleRemoveFromWishlist} from '../../reducers/cart/cart.actions'
 
 import Button from '../Button/Button'
+import {logEvent} from '../../utils/analytics';
 
 const ProductDetails = ({product}) => {
 
@@ -78,6 +79,7 @@ const ProductDetails = ({product}) => {
                         className='w-[49%]'
                         variant={isPresentInWishlist ? 'primary' : 'secondary'}
                         onClick={() => {
+                            logEvent('product', 'add/remove from wishlist')
                             isPresentInWishlist ? dispatchToCart(handleRemoveFromWishlist(product)) : dispatchToCart(handleAddToWishlist(product))
                             isPresentInWishlist ? notify('Removed from Wishlist') : notify('Added to Wishlist')
                         }
@@ -93,6 +95,7 @@ const ProductDetails = ({product}) => {
                         className='w-[49%]'
                         variant={isPresentInCart ? 'blue' : 'primary'}
                         onClick={() => {
+                            logEvent('product', 'added to cart')
                             isPresentInCart ? router.push('/cart') : dispatchToCart(handleAddToCart(product, quantity))
                             isPresentInCart ? null : notify('Added to Cart')
                         }

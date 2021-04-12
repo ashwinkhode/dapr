@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <div className='min-w-full min-h-full'>
       <SEO />
-
       <div className="lg:w-9/12 mx-auto">
         <div className='mb-12'>
           <Jumbotron

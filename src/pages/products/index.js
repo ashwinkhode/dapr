@@ -7,6 +7,7 @@ import {BsFilter} from 'react-icons/bs'
 import {server} from '../../../config'
 import {handleFilterStatus, handleSortStatus} from '../../reducers/shop/shop.actions'
 import {getFilteredData, getSortedData} from '../../utils/shopHelpers'
+import {logEvent} from '../../utils/analytics'
 
 import ProductGrid from '../../components/ProductGrid/ProductGrid'
 import Button from '../../components/Button/Button'
@@ -58,7 +59,11 @@ const Products = ({products}) => {
 					<Button
 						variant='secondary'
 						className='w-full lg:mr-4'
-						onClick={() => dispatchToShop(handleFilterStatus(shopState.filterStatus))}
+						onClick={() => {
+							logEvent('Products', 'filtering')
+							dispatchToShop(handleFilterStatus(shopState.filterStatus))
+						}
+						}
 					>
 						<TiSortAlphabetically />
 						Filter
@@ -66,7 +71,11 @@ const Products = ({products}) => {
 					<Button
 						variant='secondary'
 						className='w-full lg:w-max'
-						onClick={() => dispatchToShop(handleSortStatus(shopState.sortStatus))}
+						onClick={() => {
+							logEvent('Products', 'sorting')
+							dispatchToShop(handleSortStatus(shopState.sortStatus))
+						}
+						}
 					>
 						<BsFilter />
 						Sort
