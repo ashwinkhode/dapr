@@ -31,7 +31,7 @@ const Searchbar = () => {
                 />
                 <div className="h-full w-[15%] md:1/4 lg:w-2/12 rounded overflow-hidden">
                     <Button
-                        variant='primary'
+                        variant='default'
                         className='w-full h-full'
                         padding='p-0 px-1 py-0'
                         fullWidth
@@ -39,7 +39,7 @@ const Searchbar = () => {
                             (e) => handleSubmit(e)
                         }
                     >
-                        <AiOutlineSearch className='text-2xl' />
+                        <AiOutlineSearch className='text-2xl text-gray-700' />
                     </Button>
                 </div>
             </form>

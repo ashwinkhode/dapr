@@ -78,7 +78,14 @@ const Products = ({products}) => {
 
 			<SortFilter />
 
-			<Toaster position='bottom-right' />
+			<Toaster
+				position='bottom-right'
+				toastOptions={
+					{
+						duration: 1000
+					}
+				}
+			/>
 
 		</div>
 	)

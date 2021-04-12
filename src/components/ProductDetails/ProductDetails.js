@@ -21,7 +21,7 @@ const ProductDetails = ({product}) => {
     const notify = (text) => toast.success(text)
 
     return (
-        <div className='flex flex-col lg:flex-row items-center justify-between sm:justify-center w-full h-full lg:min-h-[87vh] lg:h-[80vh] py-4'>
+        <div className='relative flex flex-col lg:flex-row items-center justify-between sm:justify-center w-full h-full lg:min-h-[87vh] lg:h-[80vh] py-4 mb-6'>
             <div className="relative w-full lg:w-1/3 h-[50vh]">
                 <Image
                     src={image}
@@ -31,7 +31,7 @@ const ProductDetails = ({product}) => {
                 />
             </div>
 
-            <div className="flex flex-col justify-between w-full lg:w-2/3 gap-y-2 sm:gap-y-4 mt-4 lg:mt-0 lg:px-16">
+            <div className="relative flex flex-col justify-between w-full lg:w-2/3 gap-y-2 sm:gap-y-4 mt-4 lg:mt-0 lg:px-16">
                 <p className='text-xs text-gray-500'>Product Code: <span className='font-bold'>#000{id}</span></p>
                 <div className="relative">
                     <h1 className='font-bold text-lg sm:text-xl opacity-80'>{title}</h1>
@@ -73,7 +73,7 @@ const ProductDetails = ({product}) => {
                         >+</Button>
                     </div>
                 </div>
-                <div className="relative w-full justify-between inline-flex flex-row flex-wrap">
+                <div className="fixed bottom-0 left-0 right-0 w-[100vw] sm:relative sm:w-full justify-between sm:inline-flex flex-row flex-wrap">
                     <Button
                         className='w-[49%]'
                         variant={isPresentInWishlist ? 'primary' : 'secondary'}

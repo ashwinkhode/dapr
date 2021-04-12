@@ -9,7 +9,7 @@ function MyApp({Component, pageProps}) {
   return (
     <ShopProvider>
       <CartProvider>
-        <div className='w-full'>
+        <div className='w-full antialiased'>
           <Header />
           <div className="md:pt-4 sm:px-4 overflow-hidden z-[-1]">
             <Component {...pageProps} />
