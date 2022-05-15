@@ -59,7 +59,7 @@ const Jumbotron = ({
                         {description}
                     </p>
                     <Link href="/products">
-                        <a>
+                        <a className="w-max">
                             <Button
                                 padding="px-12 py-3 sm:px-16 sm:py-3"
                                 variant={
