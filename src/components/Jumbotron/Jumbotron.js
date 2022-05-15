@@ -29,26 +29,39 @@ const Jumbotron = ({
     const { div, h1, h2, p } = VARIANTS[variant]
 
     return (
-        <div className={clsx(div, 'h-[90vh] sm:h-[60vh] p-3 lg:p-4')}>
-            <div className="border-2 border-white flex flex-col pt-6 gap-y-8 sm:flex-row justify-center items-center lg:justify-between h-full lg:px-16">
-                <div className="w-4/5 sm:w-1/2 ml-6 lg:ml-0 flex flex-col justify-center">
-                    <h1 className={clsx(h1, 'font-light text-3xl lg:text-6xl')}>
-                        {title}
-                    </h1>
-                    <h2
+        <div className={clsx(div, 'relative p-2')}>
+            <div className="flex flex-col gap-y-8 md:flex-row justify-center md:items-center md:justify-between h-full px-6 pt-14 md:py-10 lg:py-[8.5rem] md:px-14 border-2 border-white">
+                <div className="w-4/5 sm:w-1/2 md:ml-0 flex flex-col justify-center">
+                    <h1
                         className={clsx(
-                            h2,
-                            'font-bold text-2xl lg:text-4xl py-2 ',
+                            h1,
+                            'font-light text-5xl md:text-[5rem] md:leading-none',
                         )}
                     >
-                        {subtitle}
-                    </h2>
-                    <p className={clsx(p, 'text-sm w-3/4 pt-2 pb-6 ')}>
+                        {title}
+                    </h1>
+                    {subtitle && (
+                        <h2
+                            className={clsx(
+                                h2,
+                                'font-bold text-2xl md:text-4xl py-2 ',
+                            )}
+                        >
+                            {subtitle}
+                        </h2>
+                    )}
+                    <p
+                        className={clsx(
+                            p,
+                            'text-sm leading-8 w-3/4 pt-2 pb-6 ',
+                        )}
+                    >
                         {description}
                     </p>
                     <Link href="/products">
                         <a>
                             <Button
+                                padding="px-12 py-3 sm:px-16 sm:py-3"
                                 variant={
                                     variant === 'white' ? 'secondary' : 'invert'
                                 }
@@ -59,12 +72,13 @@ const Jumbotron = ({
                         </a>
                     </Link>
                 </div>
-                <div className="w-2/3 h-full lg:w-[40%]  md:w-2/5 relative overflow-hidden">
+                <div className="w-full h-64 md:h-[90%] md:w-2/5 relative md:absolute md:bottom-0 md:-right-8 lg:-right-20 overflow-hidden self-center md:self-auto">
                     <Image
                         src={url}
                         alt="clothing"
                         layout="fill"
                         objectFit="contain"
+                        objectPosition="bottom"
                     />
                 </div>
             </div>

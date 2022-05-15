@@ -22,9 +22,9 @@ const Header = () => {
     const visibility = searchbarToggle ? 'hidden' : ''
 
     return (
-        <div className="w-full mx-auto sticky inset-0 bg-white z-[100] shadow">
+        <div className="w-full mx-auto sticky inset-0 bg-[#F5F4FA] z-[100]">
             <div className="w-[80%] mx-auto">
-                <div className="flex flex-row items-center justify-between w-full p-2 h-[10vh]">
+                <div className="flex flex-row items-center justify-between w-full p-4">
                     <Link href="/">
                         <a className="justify-center items-center flex">
                             <Image
@@ -73,6 +73,7 @@ const Header = () => {
                             </a>
                         </Link>
                     </div>
+
                 </div>
                 <div
                     className={clsx(
