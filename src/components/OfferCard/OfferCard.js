@@ -13,7 +13,7 @@ const OfferCard = ({ title, subtitle, description, url }) => {
                         <h2 className="text-gray-700 text-2xl font-semibold uppercase mt-4 sm:mt-0">
                             {subtitle}
                         </h2>
-                        <p className="text-gray-500 text-sm sm:text-sm leading-8 mb-6 sm:mb-0 sm:my-2 w-2/3">
+                        <p className="text-gray-500 text-sm sm:text-sm leading-8 mb-6 sm:mb-0 sm:my-2 md:w-2/3">
                             {description}
                         </p>
                     </div>

@@ -53,7 +53,7 @@ const Jumbotron = ({
                     <p
                         className={clsx(
                             p,
-                            'text-sm leading-8 w-3/4 pt-2 pb-6 ',
+                            'text-sm leading-8 md:w-3/4 pt-2 pb-6 ',
                         )}
                     >
                         {description}
