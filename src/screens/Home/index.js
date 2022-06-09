@@ -1,41 +1,7 @@
-import { RiHandbagLine, RiArrowRightLine } from 'react-icons/ri'
-import { BiCloset } from 'react-icons/bi'
-import { BsSmartwatch } from 'react-icons/bs'
-import { MdChildCare, MdFemale, MdMale } from 'react-icons/md'
-import CategoryCard from '../../components/CategoryCard/CategoryCard'
+import CategoryCard from '../../components/Category/CategoryCard'
+import CategoryList from '../../components/Category/CategoryList'
 import Jumbotron from '../../components/Jumbotron/Jumbotron'
 import OfferCard from '../../components/OfferCard/OfferCard'
-
-const CATEGORY_LIST = [
-    {
-        icon: MdMale,
-        title: 'Men Clothing',
-    },
-    {
-        icon: MdFemale,
-        title: 'Women Clothing',
-    },
-    {
-        icon: MdChildCare,
-        title: 'Kids',
-    },
-    {
-        icon: BsSmartwatch,
-        title: 'Watches',
-    },
-    {
-        icon: RiHandbagLine,
-        title: 'Bags',
-    },
-    {
-        icon: BiCloset,
-        title: 'Accessory',
-    },
-    {
-        icon: RiArrowRightLine,
-        title: 'View All',
-    },
-]
 
 export default function HomeScreen() {
     return (
@@ -53,14 +19,8 @@ export default function HomeScreen() {
                     <h1 className="px-4 md:px-0 text-3xl md:text-5xl font-light text-gray-700 mb-4 md:mb-8">
                         Category
                     </h1>
-                    <div className="flex items-stretch">
-                        {CATEGORY_LIST.map((category) => (
-                            <CategoryCard
-                                icon={category.icon}
-                                title={category.title}
-                            />
-                        ))}
-                    </div>
+
+                    <CategoryList />
                 </div>
                 <div className="mt-2 mb-20 w-full">
                     <div className="lg:h-[50vh] py-4 justify-center items-center gap-y-8 lg:gap-x-8 flex flex-col lg:flex-row">
