@@ -1,6 +1,6 @@
-import {useState} from 'react'
-import {useRouter} from 'next/router'
-import {AiOutlineSearch} from 'react-icons/ai'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { AiOutlineSearch } from 'react-icons/ai'
 
 import Button from '../Button/Button'
 
@@ -14,32 +14,30 @@ const Searchbar = () => {
     }
 
     return (
-        <div
-            className='flex flex-row justify-between items-center border-b-2 h-3/4 border-gray-400 rounded text-xs sm:text-base sm:max-w-full overflow-hidden '>
-            <form type='submit' onSubmit={(e) => handleSubmit(e)} className='flex w-full h-full'>
+        <div className="flex flex-row justify-between items-center border-b-2 h-3/4 border-gray-400 text-xs sm:text-base sm:max-w-full overflow-hidden ">
+            <form
+                type="submit"
+                onSubmit={(e) => handleSubmit(e)}
+                className="flex w-full h-full"
+            >
                 <input
-                    className='h-full w-[90%] md:3/4 lg:w-5/6 outline-none p-4'
-                    type='text'
-                    placeholder='Search'
-                    onChange={
-                        (e) => setUserInput(e.target.value)
-                    }
-                // onSubmit={
-                //     (e) => handleSubmit(e)
-                // }
-
+                    className="h-full w-[90%] md:3/4 lg:w-5/6 outline-none p-4 bg-transparent"
+                    type="text"
+                    placeholder="Search"
+                    onChange={(e) => setUserInput(e.target.value)}
+                    // onSubmit={
+                    //     (e) => handleSubmit(e)
+                    // }
                 />
-                <div className="h-full w-[15%] md:1/4 lg:w-2/12 rounded overflow-hidden">
+                <div className="h-full w-[15%] md:1/4 lg:w-2/12 rounded overflow-hidden self-center">
                     <Button
-                        variant='default'
-                        className='w-full h-full'
-                        padding='p-0 px-1 py-0'
+                        variant="default"
+                        className="w-full h-full"
+                        padding="p-0 px-1 py-0"
                         fullWidth
-                        onClick={
-                            (e) => handleSubmit(e)
-                        }
+                        onClick={(e) => handleSubmit(e)}
                     >
-                        <AiOutlineSearch className='text-2xl text-gray-700' />
+                        <AiOutlineSearch className="text-2xl text-gray-700" />
                     </Button>
                 </div>
             </form>

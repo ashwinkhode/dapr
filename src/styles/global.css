@@ -9,6 +9,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+body {
+    @apply antialiased min-w-full w-full bg-[#F5F4FA];
+}
+
 .offercard {
     box-shadow: 0px 50px 130px 0px rgba(57, 61, 70, 10%);
 }
