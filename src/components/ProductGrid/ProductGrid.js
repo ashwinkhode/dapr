@@ -1,16 +1,13 @@
 import ProductCard from '../ProductCard/ProductCard'
 
-const ProductGrid = ({products}) => {
+const ProductGrid = ({ products }) => {
     return (
         // <div className="flex flex-row flex-wrap md:justify-between my-4 mx-auto sm:w-11/12 sm:gap-4 flex-1">
-        <div className="flex flex-wrap overflow-hidden pb-8 sm:mb-0 md:-mx-1 lg:-mx-1 xl:-mx-1">
-            {
-                products.map(
-                    (product) => <ProductCard key={product.id} product={product} />
-                )
-            }
+        <div className="flex flex-wrap overflow-hidden lg:overflow-visible pb-12 -mx-2 md:-mx-2 lg:-mx-2">
+            {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+            ))}
         </div>
-
     )
 }
 
